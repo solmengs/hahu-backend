@@ -10,12 +10,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_25_053640) do
+ActiveRecord::Schema.define(version: 2020_07_27_051016) do
 
-  create_table "menus", force: :cascade do |t|
+  create_table "breakfasts", force: :cascade do |t|
     t.string "name"
     t.integer "price"
-    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "drinks", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "lunches", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "menus", force: :cascade do |t|
+    t.integer "breakfast_id"
+    t.integer "lunch_id"
+    t.integer "vegetable_id"
+    t.integer "drink_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["breakfast_id"], name: "index_menus_on_breakfast_id"
+    t.index ["drink_id"], name: "index_menus_on_drink_id"
+    t.index ["lunch_id"], name: "index_menus_on_lunch_id"
+    t.index ["vegetable_id"], name: "index_menus_on_vegetable_id"
+  end
+
+  create_table "vegetables", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

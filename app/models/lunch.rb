@@ -1,0 +1,3 @@
+class Lunch < ApplicationRecord
+    
+end
